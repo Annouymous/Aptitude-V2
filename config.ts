@@ -30,31 +30,32 @@ const signInUser = async () => {
 };
 
 // Get user data from Firestore
-const getUserData = async (userId) => {
-  const docRef = doc(db, "users", userId);
-  const docSnap = await getDoc(docRef);
-  if (docSnap.exists()) {
-    return docSnap.data();
-  } else {
-    console.log("No such document!");
-    return null;
-  }
-};
+// const getUserData = async (userId) => {
+//   const docRef = doc(db, "users", userId);
+//   const docSnap = await getDoc(docRef);
+//   if (docSnap.exists()) {
+//     return docSnap.data();
+//   } else {
+//     console.log("No such document!");
+//     return null;
+//   }
+// };
 
-// Set user data in Firestore
-const setUserData = async (userId, data) => {
-  const docRef = doc(db, "users", userId);
-  await setDoc(docRef, data, { merge: true });
-};
+// // Set user data in Firestore
+// const setUserData = async (userId, data) => {
+//   const docRef = doc(db, "users", userId);
+//   await setDoc(docRef, data, { merge: true });
+// };
 
-// Listen for real-time updates
-const listenToUserProgress = (userId, callback) => {
-  const docRef = doc(db, "users", userId);
-  onSnapshot(docRef, (docSnap) => {
-    if (docSnap.exists()) {
-      callback(docSnap.data());
-    }
-  });
-};
+// // Listen for real-time updates
+// const listenToUserProgress = (userId, callback) => {
+//   const docRef = doc(db, "users", userId);
+//   onSnapshot(docRef, (docSnap) => {
+//     if (docSnap.exists()) {
+//       callback(docSnap.data());
+//     }
+//   });
+// };
 
-export { db, signInUser, getUserData, setUserData, listenToUserProgress };
+export { db, signInUser };
+// getUserData, setUserData, listenToUserProgress;
