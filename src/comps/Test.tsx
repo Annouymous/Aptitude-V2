@@ -170,7 +170,6 @@ export default function AptitudeTest({ userID }: { userID?: string }) {
           </div>
         </>
       )}
-      <Button onClick={handleReset}>Reset Everything</Button>
     </div>
   );
 }
