@@ -4,12 +4,12 @@ import { doc, updateDoc } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { db } from "../../config";
 import { Button } from "@/components/ui/button";
-
+const totalTime = 40 * 60;
 export default function AptitudeTest({ userID }: { userID?: string }) {
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [selectedAnswer, setSelectedAnswer] = useState<any>(null);
   const [score, setScore] = useState<number>(0);
-  const [timer, setTimer] = useState<number>(45 * 60); // Default 45 minutes
+  const [timer, setTimer] = useState<number>(totalTime); // Default 45 minutes
   const [isTestFinished, setIsTestFinished] = useState<boolean>(false);
 
   useEffect(() => {
@@ -28,8 +28,11 @@ export default function AptitudeTest({ userID }: { userID?: string }) {
   useEffect(() => {
     if (timer === 0) {
       setIsTestFinished(true);
+      const timeTakenInSeconds = totalTime - timer;
+      const tt = formatTime(timeTakenInSeconds);
       updateDoc(doc(db, "Collage_users", userID as string), {
         score: score,
+        TimeTaken: tt,
         status: score / Questions.length < 0.5 ? "fail" : "pass",
       });
       return;
@@ -75,8 +78,11 @@ export default function AptitudeTest({ userID }: { userID?: string }) {
     } else {
       setTimer(0);
       setIsTestFinished(true);
+      const timeTakenInSeconds = totalTime - timer;
+      const tt = formatTime(timeTakenInSeconds);
       updateDoc(doc(db, "Collage_users", userID as string), {
         score: score,
+        TimeTaken: tt,
         status: score / Questions.length < 0.5 ? "fail" : "pass",
       });
     }

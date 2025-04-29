@@ -6,7 +6,6 @@ import { db } from "../../../config";
 async function fetchUsers() {
   const querySnapshot = await getDocs(collection(db, "Collage_users"));
   const usersData = querySnapshot.docs.map((doc) => ({
-    id: doc.id,
     ...doc.data(),
   }));
   return usersData;
