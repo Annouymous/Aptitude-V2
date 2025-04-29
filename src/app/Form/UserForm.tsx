@@ -132,7 +132,7 @@ const UserForm = ({
                   <FormItem>
                     <FormLabel>Birth Year</FormLabel>
                     <FormControl>
-                      <Input placeholder="15/07/2002" {...field} />
+                      <Input placeholder="15-07-2002" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
