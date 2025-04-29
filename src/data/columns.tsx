@@ -3,14 +3,14 @@ import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowDown } from "lucide-react";
 export type Payment = {
-  username: string;
-  status: string;
-  score: number;
-  mobile: string;
-  birthYear: string;
-  progress: {
-    currentQuestion: number;
-    score: number;
+  username?: string;
+  status?: string;
+  score?: number;
+  mobile?: string;
+  birthYear?: string;
+  progress?: {
+    currentQuestion?: number;
+    score?: number;
   };
 };
 
