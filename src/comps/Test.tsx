@@ -33,7 +33,8 @@ export default function AptitudeTest({ userID }: { userID?: string }) {
       updateDoc(doc(db, "Collage_users", userID as string), {
         score: score,
         TimeTaken: tt,
-        status: score / Questions.length < 0.5 ? "fail" : "pass",
+        // status: score / Questions.length < 0.5 ? "fail" : "pass",
+        status: score >= 30 ? "pass" : "fail",
       });
       return;
     }
@@ -83,7 +84,8 @@ export default function AptitudeTest({ userID }: { userID?: string }) {
       updateDoc(doc(db, "Collage_users", userID as string), {
         score: score,
         TimeTaken: tt,
-        status: score / Questions.length < 0.5 ? "fail" : "pass",
+        // status: score / Questions.length < 0.5 ? "fail" : "pass",
+        status: score >= 30 ? "pass" : "fail",
       });
     }
   };
@@ -97,10 +99,10 @@ export default function AptitudeTest({ userID }: { userID?: string }) {
   };
 
   const handleTestCompletion = () => {
-    if (score / Questions.length < 0.5) {
-      alert("You have failed the test. Better luck next time.");
-    } else {
+    if (score >= 30) {
       alert("Congratulations! You have passed the test.");
+    } else {
+      alert("You have failed the test. Better luck next time.");
     }
   };
 
