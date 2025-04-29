@@ -55,9 +55,9 @@ const UserForm = ({
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     console.log(data);
-    const lastFourDigits = data.mobile.slice(-4);
+    const lastFourDigits = data.mobile.slice(-6);
     const UId = data.username.replace(/\s/g, "").substring(0, 4).toUpperCase();
-    const userId = `${UId}-${lastFourDigits}-${data.birthYear.split("-")[2]}`;
+    const userId = `${UId}-${lastFourDigits}`;
     const { username, mobile, birthYear } = data;
     const userData = {
       username,
