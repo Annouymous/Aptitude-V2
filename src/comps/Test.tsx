@@ -34,7 +34,7 @@ export default function AptitudeTest({ userID }: { userID?: string }) {
         score: score,
         TimeTaken: tt,
         // status: score / Questions.length < 0.5 ? "fail" : "pass",
-        status: score >= 30 ? "pass" : "fail",
+        status: score >= 30 ? 1 : 0,
       });
       return;
     }
@@ -85,7 +85,7 @@ export default function AptitudeTest({ userID }: { userID?: string }) {
         score: score,
         TimeTaken: tt,
         // status: score / Questions.length < 0.5 ? "fail" : "pass",
-        status: score >= 30 ? "pass" : "fail",
+        status: score >= 30 ? 1 : 0,
       });
     }
   };

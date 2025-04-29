@@ -4,7 +4,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { ArrowDown } from "lucide-react";
 export type Payment = {
   username?: string;
-  status?: string;
+  status?: number;
   score?: number;
   mobile?: string;
   birthYear?: string;
@@ -60,16 +60,15 @@ export const columns: ColumnDef<Payment>[] = [
     accessorKey: "status",
     header: () => <div>Status</div>,
     cell: ({ row }) => {
-      const status = row.getValue("status");
-
+      const status = Number(row.getValue("status"));
       return (
         <div className="w-full font-medium justify-center items-center ">
-          {status === "fail" && (
+          {status === 0 && (
             <div className="bg-red-600/25 text-center rounded-md p-2">
               <span className="text-red-600">Failed</span>
             </div>
           )}
-          {status === "passed" && (
+          {status === 1 && (
             <div className="bg-green-600/25 text-center rounded-md p-2">
               <span className="text-green-600 ">Passed</span>
             </div>
